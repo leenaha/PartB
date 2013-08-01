@@ -17,7 +17,7 @@
             <div class="span12">
                 <div class="alert alert-info"><i class='icon-search'></i> <b>Wine Search Filter</b></div>
 
-                <form class="form-horizontal well" style='width:480px;'>
+                <form class="form-horizontal well">
 
                     <div class="control-group">
                       <label class="control-label" for="wineName">Name of Wine</label>
