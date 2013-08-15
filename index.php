@@ -32,31 +32,30 @@
     <body>
         <div class="row-fluid">
             <div class="span12">
-            <div class="container" style="width:550px;">
-           
                 <div class="alert alert-info"><i class='icon-search'></i> <b>Wine Search Filter</b></div>
-                
-                
+                    <div class="container" style="width:550px;">
+                               
                 <form class="form-horizontal well" action="process.php" method="get">
 
                     <div class="control-group">
                       <label class="control-label" for="wineName">Name of Wine</label>
                       <div class="controls">
-                        <input type="text" id="wineName" placeholder="Wine Name">
+                        <input type="text" id="wineName" name="wineName" placeholder="Wine Name">
                       </div>
                     </div>
 
                     <div class="control-group">
                       <label class="control-label" for="wineryName">Name of Winery</label>
                       <div class="controls">
-                        <input type="text" id="wineryName" placeholder="Winery Name">
+                        <input type="text" id="wineryName" name="wineryName" placeholder="Winery Name">
                       </div>
                     </div>
 
                     <div class="control-group">
                       <label class="control-label" for="grapeVariety">Grape Variety</label>
                       <div class="controls">
-                        <select>
+                        <select name="grapeVariety">
+							<option value='0'>All</option>
                             <?php 
                                 $query = "SELECT variety_id, variety 
                                             FROM grape_variety";
@@ -75,7 +74,8 @@
                     <div class="control-group">
                       <label class="control-label" for="regionName">Region</label>
                       <div class="controls">
-                        <select>
+                        <select name="region">
+							
                             <?php 
                                 $query = "SELECT region_name, region_id 
                                             FROM region";
@@ -92,9 +92,10 @@
                     </div>
 
                     <div class="control-group">
-                      <label class="control-label" for="minYears">Minimum of Years</label>
+                      <label class="control-label" for="minYear">Minimum of Years</label>
                       <div class="controls">
-                            <select class="input-small" id="minYears">
+                            <select class="input-small" id="minYear" name="minYear">
+								
                             <?php 
                                 $query = "SELECT DISTINCT year
                                             FROM wine
@@ -107,7 +108,8 @@
                              ?>
                             </select>
                             - Maximum Years 
-                            <select class="input-small" id="maxYears">
+                            <select class="input-small" id="maxYear" name="maxYear">
+								
                             <?php 
                                 $query = "SELECT DISTINCT year
                                             FROM wine
@@ -125,23 +127,23 @@
                     <div class="control-group">
                       <label class="control-label" for="minWineInStock">Minimum no. of wines in stock</label>
                       <div class="controls">
-                        <input type="text" id="minWineInStock" placeholder="" class="input-small">
+                        <input type="text" id="minWineInStock" name="minWineInStock" placeholder="" class="input-small">
                       </div>
                     </div>
 
                     <div class="control-group">
                       <label class="control-label" for="minWineInStock">Minimum no. of wines orders</label>
                       <div class="controls">
-                        <input type="text" id="minWineOrdered" placeholder="" class="input-small">
+                        <input type="text" id="minWineOrdered" name="minWineOrdered" placeholder="" class="input-small">
                       </div>
                     </div>
 
                     <div class="control-group">
                       <label class="control-label" for="minPrice">Min Price</label>  
                       <div class="controls">
-                      <input type="text" id="minPrice" placeholder="" class="input-small">
+                      <input type="text" id="minPrice" name="minPrice" placeholder="" class="input-small">
                       - Max Price
-                      <input type="text" id="maxPrice" placeholder="" class="input-small">
+                      <input type="text" id="maxPrice" name="maxPrice" placeholder="" class="input-small">
                       </div>
                     </div>
 
