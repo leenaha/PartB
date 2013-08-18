@@ -12,6 +12,8 @@
                 border-top:0px;
             }
         </style>
+		
+		<script src="jquery-2.0.3.min.js"></script>
     </head>
     
     <?php
@@ -127,35 +129,62 @@
                     <div class="control-group">
                       <label class="control-label" for="minWineInStock">Minimum no. of wines in stock</label>
                       <div class="controls">
-                        <input type="text" id="minWineInStock" name="minWineInStock" placeholder="" class="input-small">
+                        <input type="text" id="minWineInStock" name="minWineInStock" placeholder="" class="input-mini">
                       </div>
                     </div>
 
                     <div class="control-group">
                       <label class="control-label" for="minWineInStock">Minimum no. of wines orders</label>
                       <div class="controls">
-                        <input type="text" id="minWineOrdered" name="minWineOrdered" placeholder="" class="input-small">
+                        <input type="text" id="minWineOrdered" name="minWineOrdered" placeholder="" class="input-mini">
                       </div>
                     </div>
 
                     <div class="control-group">
-                      <label class="control-label" for="minPrice">Min Price</label>  
+                      <label class="control-label" for="minPrice">Minimum Price</label>  
                       <div class="controls">
-                      <input type="text" id="minPrice" name="minPrice" placeholder="" class="input-small">
-                      - Max Price
-                      <input type="text" id="maxPrice" name="maxPrice" placeholder="" class="input-small">
+						<div class="input-prepend input-append">
+						  <span class="add-on">$</span>
+						  <input type="text" id="minPrice" name="minPrice" placeholder="" class="input-mini">
+						  <span class="add-on">.00</span>
+						</div>
                       </div>
                     </div>
-
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" class="btn btn-success">Search</button>
-                        </div>
+					
+					<div class="control-group">
+                      <label class="control-label" for="minPrice">Maximum Price</label>  
+                      <div class="controls">
+						<div class="input-prepend input-append">
+						  <span class="add-on">$</span>
+						  <input type="text" id="maxPrice" name="maxPrice" placeholder="" class="input-mini">
+						  <span class="help-inline">Value cannot be lesser than min. price</span>
+						  <span class="add-on">.00</span>
+						</div>
+                      </div>
                     </div>
+					
+                    <div class="form-actions">
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					  <button type="reset" class="btn">Reset</button>
+					</div>
                 </form>
              </div> 
         </div><!-- closes row fluid -->
       </div>
     </body>
+	
+	<script>
+		
+		$( document ).ready(function() {
+
+			$("#form").submit(function(event){
+		
+				var minPrice = $('input[name='minPrice']').val();
+				var maxPrice = $('input[name='maxPrice']').val();
+				
+				
+			});
+		});
+	</script>
 </html>
 
