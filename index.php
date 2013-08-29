@@ -1,4 +1,3 @@
-    
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,13 +11,15 @@
                 border-top:0px;
             }
         </style>
-		
-		<script src="jquery-2.0.3.min.js"></script>
+
     </head>
-    
-    <?php
+	
+	<body>
+	
+	<?php
 	require_once('db.php');
-	if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
+	
+    if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
       		echo 'Could not connect to mysql on ' . DB_HOST . '\n';
       		exit;
    	}
@@ -28,10 +29,9 @@
      	 	echo mysql_error() . '\n';
       		exit;
    	}
-    ?>
-    
-    
-    <body>
+ 
+   	?>
+	
         <div class="row-fluid">
             <div class="span12">
                 <div class="alert alert-info"><i class='icon-search'></i> <b>Wine Search Filter</b></div>
@@ -58,18 +58,17 @@
                       <div class="controls">
                         <select name="grapeVariety">
 							<option value='0'>All</option>
-                            <?php 
-                                $query = "SELECT variety_id, variety 
-                                            FROM grape_variety";
-                                $result = mysql_query($query);
-                                while($query_data = mysql_fetch_array($result)){
-                                    $variety_id = $query_data["variety_id"];
-                                    $variety_name = $query_data["variety"];
-                                    
-                                    echo "<option value={$variety_id}>{$variety_name}</option>";
-                                } 
-                             ?>
-                        </select>
+							<?php
+							$query = "SELECT variety_id, variety 
+                                        FROM grape_variety";
+                            $result = mysql_query($query);
+                            while($query_data = mysql_fetch_array($result)){
+                                $variety_id = $query_data["variety_id"];
+                                $variety_name = $query_data["variety"];
+								echo "<option value={$variety_id}>{$variety_name}</option>";
+                            }
+							?>
+							</select>
                       </div>
                     </div>
                     
@@ -77,19 +76,17 @@
                       <label class="control-label" for="regionName">Region</label>
                       <div class="controls">
                         <select name="region">
-							
-                            <?php 
-                                $query = "SELECT region_name, region_id 
-                                            FROM region";
-                                $result = mysql_query($query);
-                                while($query_data = mysql_fetch_array($result)){
-                                    $region_id = $query_data["region_id"];
-                                    $region_name = $query_data["region_name"];
-                                    
-                                    echo "<option value={$region_id}>{$region_name}</option>";
-                                } 
-                             ?>
-                        </select>
+                        <?php
+							$query = "SELECT region_name, region_id 
+                                        FROM region";
+                            $result = mysql_query($query);
+                            while($query_data = mysql_fetch_array($result)){
+                                $region_id = $query_data["region_id"];
+                                $region_name = $query_data["region_name"];
+								echo "<option value={$region_id}>{$region_name}</option>";
+                            }
+                        ?>
+						</select>
                       </div>
                     </div>
 
@@ -97,9 +94,8 @@
                       <label class="control-label" for="minYear">Minimum of Years</label>
                       <div class="controls">
                             <select class="input-small" id="minYear" name="minYear">
-								
-                            <?php 
-                                $query = "SELECT DISTINCT year
+                            <?php
+								$query = "SELECT DISTINCT year
                                             FROM wine
                                             ORDER BY  wine.year ASC";
                                 $result = mysql_query($query);
@@ -107,13 +103,12 @@
                                     $year = $query_data["year"];    
                                     echo "<option>{$year}</option>";
                                 } 
-                             ?>
-                            </select>
+                            ?>
+							</select>
                             - Maximum Years 
                             <select class="input-small" id="maxYear" name="maxYear">
-								
-                            <?php 
-                                $query = "SELECT DISTINCT year
+                            <?php
+								$query = "SELECT DISTINCT year
                                             FROM wine
                                             ORDER BY  wine.year DESC";
                                 $result = mysql_query($query);
@@ -121,8 +116,8 @@
                                     $year = $query_data["year"];    
                                     echo "<option>{$year}</option>";
                                 } 
-                             ?>
-                            </select>
+                            ?>
+							</select>
                       </div>
                     </div>
 
@@ -157,12 +152,11 @@
 						<div class="input-prepend input-append">
 						  <span class="add-on">$</span>
 						  <input type="text" id="maxPrice" name="maxPrice" placeholder="" class="input-mini">
-						  <span class="help-inline">Value cannot be lesser than min. price</span>
 						  <span class="add-on">.00</span>
 						</div>
                       </div>
                     </div>
-					
+			
                     <div class="form-actions">
 					  <button type="submit" class="btn btn-primary">Submit</button>
 					  <button type="reset" class="btn">Reset</button>
@@ -173,18 +167,4 @@
       </div>
     </body>
 	
-	<script>
-		
-		$( document ).ready(function() {
-
-			$("#form").submit(function(event){
-		
-				var minPrice = $('input[name='minPrice']').val();
-				var maxPrice = $('input[name='maxPrice']').val();
-				
-				
-			});
-		});
-	</script>
-</html>
-
+</html>                          
